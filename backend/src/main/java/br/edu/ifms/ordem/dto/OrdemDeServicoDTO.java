@@ -2,8 +2,6 @@ package br.edu.ifms.ordem.dto;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 import br.edu.ifms.ordem.entities.Equipamento;
@@ -22,21 +20,22 @@ public class OrdemDeServicoDTO implements Serializable {
 	private Status status;
 	private Prioridade prioridade;
 	private Tecnico tecnico;
-	private List<EquipamentoDTO> equipamentos = new ArrayList<>();
+	private Equipamento equipamento;
 	
 	public OrdemDeServicoDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public OrdemDeServicoDTO(Long id, String descricaoProblema, String descricaoSolucao, Date dataCadastro,
-			Status status, Prioridade prioridade, Tecnico tecnico) {
+			Status status, Prioridade prioridade, Tecnico tecnico, Equipamento equipamento) {
 		this.id = id;
 		this.descricaoProblema = descricaoProblema;
 		this.descricaoSolucao = descricaoSolucao;
 		this.dataCadastro = dataCadastro;
-		this.status = status;
+		this.status = status;	
 		this.prioridade = prioridade;
-		this.tecnico = tecnico;
+		this.tecnico = tecnico;	
+		this.equipamento = equipamento;
 	}
 	
 	public OrdemDeServicoDTO(OrdemDeServico entity) {
@@ -47,6 +46,7 @@ public class OrdemDeServicoDTO implements Serializable {
 		this.status = entity.getStatus();
 		this.prioridade = entity.getPrioridade();
 		this.tecnico = entity.getTecnico();
+		this.equipamento = entity.getEquipamento();
 	}
 	
 	public OrdemDeServicoDTO(OrdemDeServico entity, Set<Equipamento> equipamentos) {
@@ -110,7 +110,7 @@ public class OrdemDeServicoDTO implements Serializable {
 		this.tecnico = tecnico;
 	}
 
-	public List<EquipamentoDTO> getEquipamentos() {
-		return equipamentos;
+	public Equipamento getEquipamento() {
+		return equipamento;
 	}
 }

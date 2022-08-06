@@ -62,8 +62,4 @@ public class EquipamentoDTO implements Serializable {
 	public void setSetor(Setor setor) {
 		this.setor = setor;
 	}
-	
-	
-	
-	
 }

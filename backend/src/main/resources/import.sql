@@ -5,4 +5,4 @@ INSERT INTO TB_SETOR (sigla, nome, email, telefone, coordenador) VALUES ('CEREL'
 INSERT INTO TB_SETOR (sigla, nome, email, telefone, coordenador) VALUES ('DIREN', 'Direção de Ensino','diren.nv@ifms.edu.br', '(67)98888-7070', 'Vagner Antuniassi');
 INSERT INTO TB_EQUIPAMENTO (equipamento, patrimonio, id_setor_fk) VALUES ('Notebook Lenovo', '12345', 1);
 INSERT INTO TB_EQUIPAMENTO (equipamento, patrimonio, id_setor_fk) VALUES ('Daten AllInOne', '54321', 2);
-INSERT INTO TB_ORDEM_DE_SERVICO (descricao_problema, descricao_solucao, data_cadastro, prioridade, status, id_tecnico_fk) VALUES ('Muito lento e não imprime', '', '2022-06-10', 'ALTA', 'PENDENTE', 1);
+INSERT INTO TB_ORDEM_DE_SERVICO (descricao_problema, descricao_solucao, data_cadastro, prioridade, status, id_tecnico_fk, id_equipamento_fk) VALUES ('Muito lento e nao imprime', '', '2022-06-10', 'ALTA', 'PENDENTE', 1, 2);
