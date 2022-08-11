@@ -49,10 +49,10 @@ public class OrdemDeServicoDTO implements Serializable {
 		this.equipamento = entity.getEquipamento();
 	}
 	
-	public OrdemDeServicoDTO(OrdemDeServico entity, Set<Equipamento> equipamentos) {
-		this(entity);
-		equipamentos.forEach(equipamento -> new EquipamentoDTO(equipamento));
-	}
+	// public OrdemDeServicoDTO(OrdemDeServico entity, Set<Equipamento> equipamentos) {
+	// 	this(entity);
+	// 	equipamentos.forEach(equipamento -> new EquipamentoDTO(equipamento));
+	// }
 
 	public Long getId() {
 		return id;
