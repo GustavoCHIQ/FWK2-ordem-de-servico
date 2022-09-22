@@ -18,14 +18,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import br.edu.ifms.ordem.services.SetorService;
 import br.edu.ifms.ordem.dto.SetorDTO;
+import br.edu.ifms.ordem.services.SetorService;
 
 @RestController
 @RequestMapping(value = "/setores")
 public class SetorResource {
-    
-    @Autowired
+	
+	@Autowired
 	private SetorService service;
 
 	@GetMapping
@@ -42,6 +42,12 @@ public class SetorResource {
 		Page<SetorDTO> list = service.findAllPaged(pageRequest);
 		return ResponseEntity.ok().body(list);
 	}
+	
+	//@GetMapping
+	//public ResponseEntity<List<SetorDTO>> findAll(){
+	//	List<SetorDTO> list = service.findAll();
+	//	return ResponseEntity.ok().body(list);
+	//}
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<SetorDTO> findById(@PathVariable Long id){

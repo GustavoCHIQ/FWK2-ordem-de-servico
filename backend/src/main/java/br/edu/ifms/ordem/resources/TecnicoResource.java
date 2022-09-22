@@ -43,6 +43,12 @@ public class TecnicoResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
+	//@GetMapping
+	//public ResponseEntity<List<TecnicoDTO>> findAll(){
+	//	List<TecnicoDTO> list = service.findAll();
+	//	return ResponseEntity.ok().body(list);
+	//}
+	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<TecnicoDTO> findById(@PathVariable Long id){
 		TecnicoDTO dto = service.findById(id);
@@ -70,14 +76,3 @@ public class TecnicoResource {
 		return ResponseEntity.noContent().build();
 	}
 }
-
-
-
-
-
-
-
-
-
-
-

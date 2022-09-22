@@ -55,7 +55,6 @@ public class OrdemDeServicoService {
 		entity.setPrioridade(dto.getPrioridade());
 		entity.setStatus(dto.getStatus());
 		entity.setTecnico(dto.getTecnico());
-		entity.setEquipamento(dto.getEquipamento());
 		entity = repository.save(entity);
 		return new OrdemDeServicoDTO(entity);
 	}
@@ -70,7 +69,6 @@ public class OrdemDeServicoService {
 			entity.setPrioridade(dto.getPrioridade());
 			entity.setStatus(dto.getStatus());
 			entity.setTecnico(dto.getTecnico());
-			entity.setEquipamento(dto.getEquipamento());
 			entity = repository.save(entity);
 			return new OrdemDeServicoDTO(entity);
 		} catch (EntityNotFoundException e) {
@@ -88,8 +86,3 @@ public class OrdemDeServicoService {
 		}
 	}
 }
-
-
-
-
- 

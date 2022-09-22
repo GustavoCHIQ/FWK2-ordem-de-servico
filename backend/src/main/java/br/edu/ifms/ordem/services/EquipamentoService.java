@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
@@ -22,16 +21,16 @@ import br.edu.ifms.ordem.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class EquipamentoService {
-	
-	@Autowired
+
+	// @Autowired
 	private EquipamentoRepository repository;
 
 	@Transactional(readOnly = true)
-	public List<EquipamentoDTO> findAll(){
+	public List<EquipamentoDTO> findAll() {
 		List<Equipamento> list = repository.findAll();
 		return list.stream().map(t -> new EquipamentoDTO(t)).collect(Collectors.toList());
 	}
-	
+
 	@Transactional(readOnly = true)
 	public Page<EquipamentoDTO> findAllPaged(PageRequest pageRequest) {
 		Page<Equipamento> list = repository.findAll(pageRequest);
@@ -42,7 +41,7 @@ public class EquipamentoService {
 	public EquipamentoDTO findById(Long id) {
 		Optional<Equipamento> obj = repository.findById(id);
 		Equipamento entity = obj.orElseThrow(() -> new ResourceNotFoundException(
-				                "A entidade consultada não foi localizada"));
+				"A entidade consultada não foi localizada"));
 		return new EquipamentoDTO(entity);
 	}
 
@@ -66,7 +65,7 @@ public class EquipamentoService {
 			entity = repository.save(entity);
 			return new EquipamentoDTO(entity);
 		} catch (EntityNotFoundException e) {
-			throw new ResourceNotFoundException("O recurso com o ID = "+id+" não foi localizado");
+			throw new ResourceNotFoundException("O recurso com o ID = " + id + " não foi localizado");
 		}
 	}
 
@@ -74,14 +73,9 @@ public class EquipamentoService {
 		try {
 			repository.deleteById(id);
 		} catch (EmptyResultDataAccessException e) {
-			throw new ResourceNotFoundException("O recurso com o ID = "+id+" não foi localizado");
+			throw new ResourceNotFoundException("O recurso com o ID = " + id + " não foi localizado");
 		} catch (DataIntegrityViolationException e) {
 			throw new DataBaseException("Não é possível excluir o registro, pois o mesmo está em uso");
 		}
 	}
 }
-
-
-
-
- 

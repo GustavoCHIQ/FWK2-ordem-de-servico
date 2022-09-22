@@ -22,23 +22,23 @@ import br.edu.ifms.ordem.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class TecnicoService {
-	
+
 	@Autowired
 	private TecnicoRepository repository;
 
 	@Transactional(readOnly = true)
-	public List<TecnicoDTO> findAll(){
+	public List<TecnicoDTO> findAll() {
 		List<Tecnico> list = repository.findAll();
-//		List<TecnicoDTO> listDto = new ArrayList<>();
-		
-//		for(Tecnico t : list) {
-//			listDto.add(new TecnicoDTO(t));
-//		}
-		
-//		return listDto;
+		// List<TecnicoDTO> listDto = new ArrayList<>();
+
+		// for(Tecnico t : list) {
+		// listDto.add(new TecnicoDTO(t));
+		// }
+
+		// return listDto;
 		return list.stream().map(t -> new TecnicoDTO(t)).collect(Collectors.toList());
 	}
-	
+
 	@Transactional(readOnly = true)
 	public Page<TecnicoDTO> findAllPaged(PageRequest pageRequest) {
 		Page<Tecnico> list = repository.findAll(pageRequest);
@@ -49,7 +49,7 @@ public class TecnicoService {
 	public TecnicoDTO findById(Long id) {
 		Optional<Tecnico> obj = repository.findById(id);
 		Tecnico entity = obj.orElseThrow(() -> new ResourceNotFoundException(
-				                "A entidade consultada não foi localizada"));
+				"A entidade consultada não foi localizada"));
 		return new TecnicoDTO(entity);
 	}
 
@@ -75,7 +75,7 @@ public class TecnicoService {
 			entity = repository.save(entity);
 			return new TecnicoDTO(entity);
 		} catch (EntityNotFoundException e) {
-			throw new ResourceNotFoundException("O recurso com o ID = "+id+" não foi localizado");
+			throw new ResourceNotFoundException("O recurso com o ID = " + id + " não foi localizado");
 		}
 	}
 
@@ -83,14 +83,9 @@ public class TecnicoService {
 		try {
 			repository.deleteById(id);
 		} catch (EmptyResultDataAccessException e) {
-			throw new ResourceNotFoundException("O recurso com o ID = "+id+" não foi localizado");
+			throw new ResourceNotFoundException("O recurso com o ID = " + id + " não foi localizado");
 		} catch (DataIntegrityViolationException e) {
 			throw new DataBaseException("Não é possível excluir o registro, pois o mesmo está em uso");
 		}
 	}
 }
-
-
-
-
- 

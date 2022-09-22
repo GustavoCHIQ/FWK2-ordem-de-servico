@@ -7,5 +7,5 @@ import br.edu.ifms.ordem.entities.Setor;
 
 @Repository
 public interface SetorRepository extends JpaRepository<Setor, Long> {
-
+	
 }

@@ -4,83 +4,84 @@ import java.io.Serializable;
 
 import br.edu.ifms.ordem.entities.Setor;
 
-public class SetorDTO implements Serializable{
-    private static final long serialVersionUID = 1L;
-
-    private Long id;
-    private String sigla;
-    private String nome;
-    private String telefone;
-    private String email;
-    private String coordenador;
-
-    public SetorDTO(){
-
-    }
-
-    public SetorDTO(Long id, String sigla, String nome, String telefone, String email, String coordenador) {
-        this.id = id;
-        this.sigla = sigla;
-        this.nome = nome;
-        this.telefone = telefone;
-        this.email = email;
-        this.coordenador = coordenador;
-    }
-
-    public SetorDTO(Setor entity) {
-
-        this.id = entity.getId();
-        this.sigla = entity.getSigla();
-        this.nome = entity.getNome();
-        this.telefone = entity.getTelefone();
-        this.email = entity.getEmail();
-        this.coordenador = entity.getCoordenador();
+public class SetorDTO implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
+	private Long id;
+	private String sigla;
+	private String nome;
+	private String email;
+	private String telefone;
+	private String coordenador;
+	
+	public SetorDTO() {
+		// TODO Auto-generated constructor stub
 	}
 
-    public Long getId() {
-        return id;
-    }
+	public SetorDTO(Long id, String sigla, String nome, String email, String telefone, String coordenador) {
+		super();
+		this.id = id;
+		this.sigla = sigla;
+		this.nome = nome;
+		this.email = email;
+		this.telefone = telefone;
+		this.coordenador = coordenador;
+	}
+	
+	public SetorDTO(Setor entity) {
+		this.id = entity.getId();
+		this.sigla = entity.getSigla();
+		this.nome = entity.getNome();
+		this.email = entity.getEmail();
+		this.telefone = entity.getTelefone();
+		this.coordenador = entity.getCoordenador();
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public String getSigla() {
-        return sigla;
-    }
-    public void setSigla(String sigla) {
-        this.sigla = sigla;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public String getSigla() {
+		return sigla;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public void setSigla(String sigla) {
+		this.sigla = sigla;
+	}
 
-    public String getTelefone() {
-        return telefone;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getCoordenador() {
-        return coordenador;
-    }
+	public String getTelefone() {
+		return telefone;
+	}
 
-    public void setCoordenador(String coordenador) {
-        this.coordenador = coordenador;
-    }    
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getCoordenador() {
+		return coordenador;
+	}
+
+	public void setCoordenador(String coordenador) {
+		this.coordenador = coordenador;
+	}
 }

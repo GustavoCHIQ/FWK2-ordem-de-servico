@@ -20,6 +20,7 @@ public class OrdemDeServicoDTO implements Serializable {
 	private Prioridade prioridade;
 	private Tecnico tecnico;
 	private Equipamento equipamento;
+	//private List<EquipamentoDTO> equipamentos = new ArrayList<>();
 	
 	public OrdemDeServicoDTO() {
 		// TODO Auto-generated constructor stub
@@ -31,9 +32,9 @@ public class OrdemDeServicoDTO implements Serializable {
 		this.descricaoProblema = descricaoProblema;
 		this.descricaoSolucao = descricaoSolucao;
 		this.dataCadastro = dataCadastro;
-		this.status = status;	
+		this.status = status;
 		this.prioridade = prioridade;
-		this.tecnico = tecnico;	
+		this.tecnico = tecnico;
 		this.equipamento = equipamento;
 	}
 	
@@ -47,6 +48,11 @@ public class OrdemDeServicoDTO implements Serializable {
 		this.tecnico = entity.getTecnico();
 		this.equipamento = entity.getEquipamento();
 	}
+	
+	/*public OrdemDeServicoDTO(OrdemDeServico entity, Set<Equipamento> equipamentos) {
+		this(entity);
+		equipamentos.forEach(equipamento -> new EquipamentoDTO(equipamento));
+	}*/
 
 	public Long getId() {
 		return id;
@@ -107,4 +113,13 @@ public class OrdemDeServicoDTO implements Serializable {
 	public Equipamento getEquipamento() {
 		return equipamento;
 	}
+
+	public void setEquipamento(Equipamento equipamento) {
+		this.equipamento = equipamento;
+	}
+
+	/*public List<EquipamentoDTO> getEquipamentos() {
+		return equipamentos;
+	}*/
+	
 }

@@ -49,11 +49,11 @@ public class SetorService {
 	@Transactional
 	public SetorDTO insert(SetorDTO dto) {
 		Setor entity = new Setor();
-		entity.setNome(dto.getNome());
-		entity.setTelefone(dto.getTelefone());
-		entity.setEmail(dto.getEmail());
-		entity.setCoordenador(dto.getCoordenador());
 		entity.setSigla(dto.getSigla());
+		entity.setNome(dto.getNome());
+		entity.setEmail(dto.getEmail());
+		entity.setTelefone(dto.getTelefone());		
+		entity.setCoordenador(dto.getCoordenador());
 		entity = repository.save(entity);
 		return new SetorDTO(entity);
 	}
@@ -62,9 +62,11 @@ public class SetorService {
 	public SetorDTO update(Long id, SetorDTO dto) {
 		try {
 			Setor entity = repository.getById(id);
+			entity.setSigla(dto.getSigla());
 			entity.setNome(dto.getNome());
-			entity.setTelefone(dto.getTelefone());
 			entity.setEmail(dto.getEmail());
+			entity.setTelefone(dto.getTelefone());		
+			entity.setCoordenador(dto.getCoordenador());
 			entity = repository.save(entity);
 			return new SetorDTO(entity);
 		} catch (EntityNotFoundException e) {
@@ -82,8 +84,3 @@ public class SetorService {
 		}
 	}
 }
-
-
-
-
- 

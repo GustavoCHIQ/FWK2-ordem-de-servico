@@ -27,7 +27,7 @@ public class EquipamentoResource {
 	
 	@Autowired
 	private EquipamentoService service;
-
+	
 	@GetMapping
 	public ResponseEntity<Page<EquipamentoDTO>> findAllPaged(
 			@RequestParam(value = "page", defaultValue = "0") Integer page,
@@ -70,14 +70,3 @@ public class EquipamentoResource {
 		return ResponseEntity.noContent().build();
 	}
 }
-
-
-
-
-
-
-
-
-
-
-

@@ -41,7 +41,7 @@ public class OrdemDeServico implements Serializable {
 	private Tecnico tecnico;
 	
 	@ManyToOne
-	@JoinColumn(name ="id_equipamento_fk")
+	@JoinColumn(name = "id_equipamento_fk")
 	private Equipamento equipamento;
 	
 	
