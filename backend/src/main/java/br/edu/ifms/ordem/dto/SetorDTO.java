@@ -6,16 +6,15 @@ import br.edu.ifms.ordem.entities.Setor;
 
 public class SetorDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	private Long id;
 	private String sigla;
 	private String nome;
 	private String email;
 	private String telefone;
 	private String coordenador;
-	
+
 	public SetorDTO() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public SetorDTO(Long id, String sigla, String nome, String email, String telefone, String coordenador) {
@@ -27,7 +26,7 @@ public class SetorDTO implements Serializable {
 		this.telefone = telefone;
 		this.coordenador = coordenador;
 	}
-	
+
 	public SetorDTO(Setor entity) {
 		this.id = entity.getId();
 		this.sigla = entity.getSigla();

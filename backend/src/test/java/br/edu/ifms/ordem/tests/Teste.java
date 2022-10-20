@@ -1,10 +1,13 @@
 package br.edu.ifms.ordem.tests;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+
 
 class Teste {
 
@@ -26,7 +29,7 @@ class Teste {
 
 	@Test
 	void test() {
-		// fail("Not yet implemented");
+		fail("Not yet implemented");
 	}
 
 }

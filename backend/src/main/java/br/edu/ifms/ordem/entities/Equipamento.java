@@ -15,19 +15,18 @@ import javax.persistence.Table;
 @Table(name = "tb_equipamento")
 public class Equipamento implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String equipamento;
 	private String patrimonio;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_setor_fk")
 	private Setor setor;
-	
+
 	public Equipamento() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Equipamento(Long id, String equipamento, String patrimonio, Setor setor) {

@@ -5,15 +5,14 @@ import java.time.Instant;
 
 public class StandartError implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	private Instant timestamp;
 	private Integer status;
 	private String error;
 	private String path;
 	private String message;
-	
+
 	public StandartError() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Instant getTimestamp() {
@@ -55,7 +54,5 @@ public class StandartError implements Serializable {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
-	
 
 }

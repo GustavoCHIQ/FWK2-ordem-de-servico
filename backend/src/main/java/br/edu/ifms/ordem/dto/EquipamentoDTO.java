@@ -7,14 +7,13 @@ import br.edu.ifms.ordem.entities.Setor;
 
 public class EquipamentoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	private Long id;
 	private String equipamento;
 	private String patrimonio;
 	private Setor setor;
 
 	public EquipamentoDTO() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public EquipamentoDTO(Long id, String equipamento, String patrimonio, Setor setor) {
@@ -23,7 +22,7 @@ public class EquipamentoDTO implements Serializable {
 		this.patrimonio = patrimonio;
 		this.setor = setor;
 	}
-	
+
 	public EquipamentoDTO(Equipamento entity) {
 		this.id = entity.getId();
 		this.equipamento = entity.getEquipamento();

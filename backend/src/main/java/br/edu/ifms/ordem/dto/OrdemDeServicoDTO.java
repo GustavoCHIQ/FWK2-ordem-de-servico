@@ -11,7 +11,7 @@ import br.edu.ifms.ordem.entities.enums.Status;
 
 public class OrdemDeServicoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	private Long id;
 	private String descricaoProblema;
 	private String descricaoSolucao;
@@ -20,10 +20,8 @@ public class OrdemDeServicoDTO implements Serializable {
 	private Prioridade prioridade;
 	private Tecnico tecnico;
 	private Equipamento equipamento;
-	//private List<EquipamentoDTO> equipamentos = new ArrayList<>();
-	
+
 	public OrdemDeServicoDTO() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public OrdemDeServicoDTO(Long id, String descricaoProblema, String descricaoSolucao, Date dataCadastro,
@@ -37,7 +35,7 @@ public class OrdemDeServicoDTO implements Serializable {
 		this.tecnico = tecnico;
 		this.equipamento = equipamento;
 	}
-	
+
 	public OrdemDeServicoDTO(OrdemDeServico entity) {
 		this.id = entity.getId();
 		this.descricaoProblema = entity.getDescricaoProblema();
@@ -48,11 +46,14 @@ public class OrdemDeServicoDTO implements Serializable {
 		this.tecnico = entity.getTecnico();
 		this.equipamento = entity.getEquipamento();
 	}
-	
-	/*public OrdemDeServicoDTO(OrdemDeServico entity, Set<Equipamento> equipamentos) {
-		this(entity);
-		equipamentos.forEach(equipamento -> new EquipamentoDTO(equipamento));
-	}*/
+
+	/*
+	 * public OrdemDeServicoDTO(OrdemDeServico entity, Set<Equipamento>
+	 * equipamentos) {
+	 * this(entity);
+	 * equipamentos.forEach(equipamento -> new EquipamentoDTO(equipamento));
+	 * }
+	 */
 
 	public Long getId() {
 		return id;
@@ -118,8 +119,10 @@ public class OrdemDeServicoDTO implements Serializable {
 		this.equipamento = equipamento;
 	}
 
-	/*public List<EquipamentoDTO> getEquipamentos() {
-		return equipamentos;
-	}*/
-	
+	/*
+	 * public List<EquipamentoDTO> getEquipamentos() {
+	 * return equipamentos;
+	 * }
+	 */
+
 }

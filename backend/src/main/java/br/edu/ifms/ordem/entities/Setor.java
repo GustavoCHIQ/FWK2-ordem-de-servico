@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table(name = "tb_setor")
 public class Setor implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -22,9 +22,8 @@ public class Setor implements Serializable {
 	private String email;
 	private String telefone;
 	private String coordenador;
-	
+
 	public Setor() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Setor(Long id, String sigla, String nome, String email, String telefone, String coordenador) {

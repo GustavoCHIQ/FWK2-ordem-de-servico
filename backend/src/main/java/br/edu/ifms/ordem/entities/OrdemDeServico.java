@@ -22,8 +22,9 @@ import br.edu.ifms.ordem.entities.enums.Status;
 @Table(name = "tb_ordem_de_servico")
 public class OrdemDeServico implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(name = "descricao_problema")
 	private String descricaoProblema;
@@ -35,18 +36,16 @@ public class OrdemDeServico implements Serializable {
 	private Status status;
 	@Enumerated(EnumType.STRING)
 	private Prioridade prioridade;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_tecnico_fk")
 	private Tecnico tecnico;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_equipamento_fk")
 	private Equipamento equipamento;
-	
-	
+
 	public OrdemDeServico() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public OrdemDeServico(Long id, String descricaoProblema, String descricaoSolucao, Date dataCadastro, Status status,
