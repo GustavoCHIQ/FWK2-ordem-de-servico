@@ -60,7 +60,7 @@ public class TecnicoService {
 	@Transactional
 	public TecnicoDTO update(Long id, TecnicoDTO dto) {
 		try {
-			Tecnico entity = repository.getById(id);
+			Tecnico entity = repository.getReferenceById(id);
 			entity.setNome(dto.getNome());
 			entity.setTelefone(dto.getTelefone());
 			entity.setEmail(dto.getEmail());

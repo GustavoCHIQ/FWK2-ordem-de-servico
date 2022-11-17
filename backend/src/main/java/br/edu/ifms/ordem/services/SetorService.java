@@ -22,16 +22,16 @@ import br.edu.ifms.ordem.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class SetorService {
-	
+
 	@Autowired
 	private SetorRepository repository;
 
 	@Transactional(readOnly = true)
-	public List<SetorDTO> findAll(){
+	public List<SetorDTO> findAll() {
 		List<Setor> list = repository.findAll();
 		return list.stream().map(t -> new SetorDTO(t)).collect(Collectors.toList());
 	}
-	
+
 	@Transactional(readOnly = true)
 	public Page<SetorDTO> findAllPaged(PageRequest pageRequest) {
 		Page<Setor> list = repository.findAll(pageRequest);
@@ -42,7 +42,7 @@ public class SetorService {
 	public SetorDTO findById(Long id) {
 		Optional<Setor> obj = repository.findById(id);
 		Setor entity = obj.orElseThrow(() -> new ResourceNotFoundException(
-				                "A entidade consultada não foi localizada"));
+				"A entidade consultada não foi localizada"));
 		return new SetorDTO(entity);
 	}
 
@@ -52,7 +52,7 @@ public class SetorService {
 		entity.setSigla(dto.getSigla());
 		entity.setNome(dto.getNome());
 		entity.setEmail(dto.getEmail());
-		entity.setTelefone(dto.getTelefone());		
+		entity.setTelefone(dto.getTelefone());
 		entity.setCoordenador(dto.getCoordenador());
 		entity = repository.save(entity);
 		return new SetorDTO(entity);
@@ -61,16 +61,16 @@ public class SetorService {
 	@Transactional
 	public SetorDTO update(Long id, SetorDTO dto) {
 		try {
-			Setor entity = repository.getById(id);
+			Setor entity = repository.getReferenceById(id);
 			entity.setSigla(dto.getSigla());
 			entity.setNome(dto.getNome());
 			entity.setEmail(dto.getEmail());
-			entity.setTelefone(dto.getTelefone());		
+			entity.setTelefone(dto.getTelefone());
 			entity.setCoordenador(dto.getCoordenador());
 			entity = repository.save(entity);
 			return new SetorDTO(entity);
 		} catch (EntityNotFoundException e) {
-			throw new ResourceNotFoundException("O recurso com o ID = "+id+" não foi localizado");
+			throw new ResourceNotFoundException("O recurso com o ID = " + id + " não foi localizado");
 		}
 	}
 
@@ -78,7 +78,7 @@ public class SetorService {
 		try {
 			repository.deleteById(id);
 		} catch (EmptyResultDataAccessException e) {
-			throw new ResourceNotFoundException("O recurso com o ID = "+id+" não foi localizado");
+			throw new ResourceNotFoundException("O recurso com o ID = " + id + " não foi localizado");
 		} catch (DataIntegrityViolationException e) {
 			throw new DataBaseException("Não é possível excluir o registro, pois o mesmo está em uso");
 		}

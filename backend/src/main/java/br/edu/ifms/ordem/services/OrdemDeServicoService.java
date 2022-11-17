@@ -22,16 +22,16 @@ import br.edu.ifms.ordem.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class OrdemDeServicoService {
-	
+
 	@Autowired
 	private OrdemDeServicoRepository repository;
 
 	@Transactional(readOnly = true)
-	public List<OrdemDeServicoDTO> findAll(){
+	public List<OrdemDeServicoDTO> findAll() {
 		List<OrdemDeServico> list = repository.findAll();
 		return list.stream().map(t -> new OrdemDeServicoDTO(t)).collect(Collectors.toList());
 	}
-	
+
 	@Transactional(readOnly = true)
 	public Page<OrdemDeServicoDTO> findAllPaged(PageRequest pageRequest) {
 		Page<OrdemDeServico> list = repository.findAll(pageRequest);
@@ -42,7 +42,7 @@ public class OrdemDeServicoService {
 	public OrdemDeServicoDTO findById(Long id) {
 		Optional<OrdemDeServico> obj = repository.findById(id);
 		OrdemDeServico entity = obj.orElseThrow(() -> new ResourceNotFoundException(
-				                "A entidade consultada não foi localizada"));
+				"A entidade consultada não foi localizada"));
 		return new OrdemDeServicoDTO(entity);
 	}
 
@@ -62,7 +62,7 @@ public class OrdemDeServicoService {
 	@Transactional
 	public OrdemDeServicoDTO update(Long id, OrdemDeServicoDTO dto) {
 		try {
-			OrdemDeServico entity = repository.getById(id);
+			OrdemDeServico entity = repository.getReferenceById(id);
 			entity.setDescricaoProblema(dto.getDescricaoProblema());
 			entity.setDescricaoSolucao(dto.getDescricaoSolucao());
 			entity.setDataCadastro(dto.getDataCadastro());
@@ -72,7 +72,7 @@ public class OrdemDeServicoService {
 			entity = repository.save(entity);
 			return new OrdemDeServicoDTO(entity);
 		} catch (EntityNotFoundException e) {
-			throw new ResourceNotFoundException("O recurso com o ID = "+id+" não foi localizado");
+			throw new ResourceNotFoundException("O recurso com o ID = " + id + " não foi localizado");
 		}
 	}
 
@@ -80,7 +80,7 @@ public class OrdemDeServicoService {
 		try {
 			repository.deleteById(id);
 		} catch (EmptyResultDataAccessException e) {
-			throw new ResourceNotFoundException("O recurso com o ID = "+id+" não foi localizado");
+			throw new ResourceNotFoundException("O recurso com o ID = " + id + " não foi localizado");
 		} catch (DataIntegrityViolationException e) {
 			throw new DataBaseException("Não é possível excluir o registro, pois o mesmo está em uso");
 		}

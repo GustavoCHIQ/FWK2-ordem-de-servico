@@ -58,7 +58,7 @@ public class EquipamentoService {
 	@Transactional
 	public EquipamentoDTO update(Long id, EquipamentoDTO dto) {
 		try {
-			Equipamento entity = repository.getById(id);
+			Equipamento entity = repository.getReferenceById(id);
 			entity.setEquipamento(dto.getEquipamento());
 			entity.setPatrimonio(dto.getPatrimonio());
 			entity.setSetor(dto.getSetor());
