@@ -5,6 +5,8 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -78,6 +80,11 @@ public class TecnicoResourceTests {
                                                              // id não existente,
                                                              // retorne
                                                              // uma exceção
+
+        // INSERT
+        when(service.insert(any()))
+                .thenReturn(tecnicoDTO); // Quando o método insert for chamado, retorne o
+                                         // técnicoDTO
     }
 
     @Test
@@ -147,4 +154,41 @@ public class TecnicoResourceTests {
 
         resultado.andExpect(status().isNotFound()); // Espera que o status da resposta seja 404 (Not Found)
     }
+
+    @Test
+    public void insertDeveriaRetornarCreatedETecnicoDTO() throws Exception {
+        String jsonBody = objectMapper.writeValueAsString(tecnicoDTO); // Converte o objeto para JSON
+
+        ResultActions resultado = mockMvc.perform(post("/tecnicos") // Faz uma requisição POST para o recurso /tecnicos
+                .content(jsonBody) // Envia o corpo da requisição
+                .contentType(MediaType.APPLICATION_JSON) // Define o tipo de conteúdo
+                .accept(MediaType.APPLICATION_JSON)); // Define o tipo de resposta
+
+        resultado.andExpect(status().isCreated()); // Espera que o status da resposta seja 201 (Created)
+        resultado.andExpect(jsonPath("$.id").exists()); // Espera que o JSON retornado tenha o campo id
+        resultado.andExpect(jsonPath("$.nome").exists()); // Espera que o JSON retornado tenha o campo nome
+    }
+
+    @Test
+    public void deleteDeveriaRetornarNoContentQuandoIDExistir() throws Exception {
+        ResultActions resultado = mockMvc.perform(delete("/tecnicos/{id}", idExistente)
+                .accept(MediaType.APPLICATION_JSON)); // Faz uma requisição DELETE para o recurso /tecnicos/{id} e
+                                                      // espera
+                                                      // que
+                                                      // o tipo de resposta seja JSON
+
+        resultado.andExpect(status().isNoContent()); // Espera que o status da resposta seja 204 (No Content)
+    }
+
+    @Test
+    public void deleteDeveriaRetornarNotFoundQuandoIDNaoExistir() throws Exception {
+        ResultActions resultado = mockMvc.perform(delete("/tecnicos/{id}", idNaoExistente)
+                .accept(MediaType.APPLICATION_JSON)); // Faz uma requisição DELETE para o recurso /tecnicos/{id} e
+                                                      // espera
+                                                      // que
+                                                      // o tipo de resposta seja JSON
+
+        resultado.andExpect(status().isNotFound()); // Espera que o status da resposta seja 404 (Not Found)
+    }
+
 }
